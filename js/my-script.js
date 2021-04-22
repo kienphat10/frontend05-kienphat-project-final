@@ -104,25 +104,6 @@ $(document).ready(function () {
 				<a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">${title}</a>
 			</li>
 			`
-
-			contentCatagory += `
-				<div class="card card--big">
-					<div class="card__cover">
-						<img src="${thumb}" alt="${title}">
-						<a href="#" class="card__play">
-							<i class="icon ion-ios-play"></i>
-						</a>
-					</div>
-					<div class="card__content">
-						<h3 class="card__title"><a href="#">${title}</a></h3>
-						<span class="card__category">
-							<a href="#">Romance</a>
-							<a href="#">Drama</a>
-						</span>
-						<span class="card__rate"><i class="icon ion-ios-star"></i>6.3</span>
-					</div>
-				</div>
-			`
 		});
 
 		$('#content__tabs').html(content);
