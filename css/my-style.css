@@ -1,0 +1,8 @@
+.accordion__card {
+    background-color: unset;
+}
+
+.accordion__card .card-header button {
+    margin-bottom: 15px;
+    background-color: #2b2b31;
+}

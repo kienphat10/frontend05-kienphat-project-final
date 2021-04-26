@@ -10,17 +10,18 @@ $(document).ready(function () {
 		data.forEach(element => {
 			let thumb = JSON.parse(element.thumbnail).high.url;
 			let title = element.title;
+			let id = element.id;
 			content += `
 			<div class="item">
 				<div class="card card--big">
 					<div class="card__cover">
 						<img src="${thumb}" alt="${title}">
-						<a href="#" class="card__play">
+						<a href="details.html?id=${id}" class="card__play">
 							<i class="icon ion-ios-play"></i>
 						</a>
 					</div>
 					<div class="card__content">
-						<h3 class="card__title"><a href="#">${title}</a></h3>
+						<h3 class="card__title"><a href="details.html?id=${id}">${title}</a></h3>
 					</div>
 				</div>
 			</div>
@@ -140,32 +141,10 @@ $(document).ready(function () {
 			`;
 		});
 
-		$('#catalog').html(content);
+		$('#list-courses').html(content);
 	})
 
-	// video
-	let playVideos = `${urlPlaylists}/2/videos`;
-	$.get(playVideos, { limit: 6 }, function (data) {
-		let content = '';
-		data.forEach(element => {
-			let thumb = JSON.parse(element.thumbnail).high.url;
-			let title = element.title;
-			let id = element.id;
-			let date = element.updated_at;
-			
-			content += `
-					
-				<button type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-					<span>${title}</span>
-					<span>${date}</span>
-				</button>
-				
-			`;
-		});
-
-		$('#headingOne').html(content);
-		
-	})
+	
 	
 	
 });
