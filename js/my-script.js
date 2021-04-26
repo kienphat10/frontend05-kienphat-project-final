@@ -52,10 +52,10 @@ $(document).ready(function () {
 					items: 3,
 				},
 				992: {
-					items: 4,
+					items: 3,
 				},
 				1200: {
-					items: 4,
+					items: 3,
 				},
 			},
 		});
@@ -69,7 +69,7 @@ $(document).ready(function () {
 			let title = element.title;
 			content += `
 			
-			<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+			<div class=" col-lg-6 col-xl-4">
 					<div class="card">
 						<div class="card__cover">
 							<img src="${thumb}" alt="${title}">
@@ -107,10 +107,70 @@ $(document).ready(function () {
 		});
 
 		$('#content__tabs').html(content);
-		$('#playVideosId').html(content);
+	
 		
 	});
 
+	// danh sach video trong catagory
+
+	$.get(urlPlaylists, { limit: 12 }, function (data) {
+		let content = '';
+		data.forEach(element => {
+			let thumb = JSON.parse(element.thumbnail).high.url;
+			let title = element.title;
+			content += `
+				<div class="col-lg-6 col-xl-4">
+					<div class="card">
+						<div class="card__cover">
+							<img src="${thumb}" alt="${title}">
+							<a href="#" class="card__play">
+								<i class="icon ion-ios-play"></i>
+							</a>
+						</div>
+						<div class="card__content">
+							<h3 class="card__title"><a href="#">I${title}</a></h3>
+							<span class="card__category">
+								<a href="#">Action</a>
+								<a href="#">Triler</a>
+							</span>
+							<span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+						</div>
+					</div>
+				</div>
+			`;
+		});
+
+		$('#catalog').html(content);
+	})
+
+	// video
+	let playVideos = `${urlPlaylists}/2/videos`;
+	$.get(playVideos, { limit: 6 }, function (data) {
+		let content = '';
+		data.forEach(element => {
+			let thumb = JSON.parse(element.thumbnail).high.url;
+			let title = element.title;
+			let id = element.id;
+			let date = element.updated_at;
+			
+			content += `
+					
+				<button type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<span>${title}</span>
+					<span>${date}</span>
+				</button>
+				
+			`;
+		});
+
+		$('#headingOne').html(content);
+		
+	})
+	
+	
 });
+
+
+
 
 
